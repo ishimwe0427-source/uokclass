@@ -1,0 +1,147 @@
+/* Full-page shell — all UOK pages */
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #0f172a;
+  background: linear-gradient(165deg, #e0f2fe 0%, #f8fafc 40%, #eef2ff 100%);
+  background-attachment: fixed;
+}
+
+.page-shell {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.5rem;
+  box-sizing: border-box;
+}
+
+.page-shell--narrow {
+  max-width: 720px;
+}
+
+.nav-links {
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  border: 1px solid rgba(14, 165, 233, 0.15);
+  backdrop-filter: blur(8px);
+}
+.nav-links a {
+  color: #0369a1;
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.12);
+  margin-top: 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: #0369a1;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.02em;
+}
+.hero-sub {
+  color: #64748b;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.marquee-bar {
+  background: linear-gradient(90deg, #fffbeb, #fef3c7);
+  border-bottom: 2px solid #f59e0b;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+.marquee-bar marquee {
+  font-weight: 700;
+  color: #b45309;
+  font-size: 1rem;
+}
+
+.attendance-list {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem 1.25rem 2.5rem;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.12);
+  line-height: 2;
+}
+
+.site-footer {
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 45%, #0c4a6e 100%);
+  color: #e2e8f0;
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+.site-footer .badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+.site-footer .name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.2rem;
+}
+.site-footer .role {
+  font-size: 0.98rem;
+  color: #bae6fd;
+  margin: 0 0 1.1rem;
+}
+.site-footer a.email {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(14, 165, 233, 0.3);
+  padding: 0.55rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s, transform 0.15s;
+}
+.site-footer a.email:hover {
+  background: rgba(14, 165, 233, 0.5);
+  transform: translateY(-2px);
+}
+.site-footer .hosts {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+.site-footer .hosts a {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+.site-footer .hosts a:hover {
+  text-decoration: underline;
+}

@@ -4,33 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Attendance | Ishimwe Jean Francois</title>
-  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/site.css">
   <style>
-    body {
-      font-family: Georgia, serif;
-      max-width: 640px;
-      margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    .session-marquee {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      padding: 0.4rem 0;
+      margin: 0.75rem 0 1.25rem;
     }
-    main { flex: 1; padding: 1.5rem 1rem; }
-    h1 { color: #0b4f8a; }
-    marquee { font-size: 1.15rem; font-weight: bold; color: #b45309; background: #fffbeb; padding: 0.35rem 0; }
-    ol { line-height: 1.9; }
-    .meta { color: #555; font-size: 0.95rem; margin-top: 1rem; }
+    .session-marquee marquee { color: #b45309; font-weight: 600; }
+    h1 { color: #0369a1; margin: 0.5rem 0 0; font-size: 1.85rem; }
+    .meta { color: #64748b; font-size: 0.95rem; margin-top: 1.25rem; }
+    .meta a { color: #0369a1; font-weight: 600; }
   </style>
 </head>
 <body>
-  <main>
+  <div class="marquee-bar">
     <marquee behavior="scroll" direction="left">
       UOK · Distributed and Cloud Computing · Attendance Register · Ishimwe Jean Francois · VM cloud-uok · 20.121.113.179
     </marquee>
+  </div>
 
+  <div class="page-shell">
     <h1>Students Attendance</h1>
-    <p><marquee behavior="alternate" direction="right">Session: SaaS / Linux VM — Present list (Ishimwe group)</marquee></p>
+    <div class="session-marquee">
+      <marquee behavior="alternate" direction="right">Session: SaaS / Linux VM — Present list (Ishimwe group)</marquee>
+    </div>
 
-    <ol>
+    <ol class="attendance-list">
       <li>Ishimwe Jean Francois — Present</li>
       <li>Alice Uwase — Present</li>
       <li>Jean Claude Habimana — Present</li>
@@ -43,13 +45,13 @@
       Course: Distributed and Cloud Computing · University of Kigali (UOK)<br>
       <a href="/">Home</a> · <a href="/assign1.html">Assignment 1</a> · <a href="/assign2.html">Assignment 2</a>
     </p>
-  </main>
+  </div>
 
   <footer class="site-footer">
     <span class="badge">Designed &amp; built by</span>
     <p class="name">Ishimwe Jean Francois</p>
     <p class="role">Senior Software Engineer</p>
-    <a class="email" href="mailto:ifjean27@gmail.com">ifjean27@gmail.com</a>
+    <a class="email" href="mailto:ishimwe0427@gmail.com">ishimwe0427@gmail.com</a>
     <p class="hosts">
       <a href="https://uok-assignment2-ishimwe.vercel.app/">Vercel</a> ·
       <a href="http://20.121.113.179/">Azure VM</a>
