@@ -111,13 +111,19 @@ http://20.121.113.179/
 
 ---
 
-## Screenshots to submit (checklist)
+## Screenshots to submit (GitHub folder `screenshots/`)
 
-- [ ] Azure VM running (Overview)
-- [ ] Public + Private IP
-- [ ] Networking ports 22, 80, 443
-- [ ] `sudo ufw status`
-- [ ] `df -h`
-- [ ] `ip addr` / `ip route`
-- [ ] Nginx welcome OR your homepage in browser
-- [ ] `curl localhost` showing your HTML
+Upload PNG files with **these exact names** (see `screenshots/README.md`):
+
+| Requirement | Filename |
+|-------------|----------|
+| 1. Public + private IP | `01 public private ip.png` |
+| 2. Ports (Azure NSG) | `02 ports azure nsg.png` |
+| 2. Ports (UFW on VM) | `03 ports ufw.png` |
+| 3. Disk size | `04 disk dfh.png` |
+| 4. Network config | `05 network ipaddr.png` |
+| 4. Route + DNS | `06 network route dns.png` |
+| 5. Linux VM + site | `07 website homepage.png` |
+| 5. assign2 page | `08 website assign2.png` |
+
+**Live proof (no screenshot needed):** http://20.121.113.179/
