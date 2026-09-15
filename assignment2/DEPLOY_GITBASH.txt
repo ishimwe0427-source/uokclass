@@ -1,0 +1,121 @@
+ASSIGNMENT 2 — 30-MINUTE DEPLOY (GIT BASH + AZURE VM)
+Student: Ishimwe Jean Francois
+======================================================
+
+UPDATE THESE 3 LINES IF YOUR VM IS DIFFERENT:
+  VM_USER=azureuser
+  VM_IP=20.121.113.179
+  SSH_KEY="/c/Users/IT FAir/Desktop/uokclass/ubuntu-lemp-key.pem"
+
+If class gave you cloudstudent@another IP, change VM_USER and VM_IP.
+
+
+PART A — GIT (5 min) — share with lecturer
+------------------------------------------
+Open Git Bash:
+
+cd "/c/Users/IT FAir/Desktop/uokclass2"
+git init
+git add .
+git commit -m "Assignment 2: Linux VM homepage and documentation"
+
+Repo already on GitHub (use this URL — do NOT use YOUR_USERNAME):
+
+git branch -M main
+git remote remove origin 2>/dev/null
+git remote add origin https://github.com/ishimwe0427-source/uok-assignment2.git
+git push -u origin main
+
+Lecturer link: https://github.com/ishimwe0427-source/uok-assignment2
+
+
+PART B — AZURE PORTS (3 min) — if website does not open
+-------------------------------------------------------
+Portal → VM cloud-uok → Networking → Add inbound rules:
+  SSH   22   TCP
+  HTTP  80   TCP
+  HTTPS 443  TCP
+
+
+SSH TIMEOUT? (connect to host ... port 22: Connection timed out)
+----------------------------------------------------------------
+1. Azure Portal → cloud-uok → Overview → Status must be **Running** (Start if not).
+2. On Overview, copy **Public IP address** — if it is NOT 20.121.113.179, use the new IP in ssh/scp.
+3. Networking → Network settings → confirm NSG **cloud-uok-nsg** has SSH **22 Allow** (you did this).
+4. Public IP resource → SKU **Standard** + Assignment **Static** (optional but stops IP changing).
+5. Still stuck: VM → Help → **Boot diagnostics** or **Run command** → RunShellScript:
+     sudo systemctl status ssh
+     sudo systemctl start ssh
+     sudo ufw allow 22/tcp
+
+PART C — SSH FIRST TIME (2 min)
+-------------------------------
+In Git Bash (fix key permissions once on Windows):
+
+chmod 400 "/c/Users/IT FAir/Desktop/uokclass/ubuntu-lemp-key.pem"
+ssh -i "/c/Users/IT FAir/Desktop/uokclass/ubuntu-lemp-key.pem" azureuser@20.121.113.179
+
+If username fails, try: cloudstudent@20.121.113.179
+
+
+PART D — NGINX ON VM (5 min) — run ON THE VM after SSH
+-------------------------------------------------------
+sudo apt update
+sudo apt install -y nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw --force enable
+sudo ufw status
+
+
+PART E — UPLOAD YOUR PAGE (class scp method) (5 min)
+----------------------------------------------------
+NEW Git Bash window (stay in uokclass2 folder):
+
+cd "/c/Users/IT FAir/Desktop/uokclass2"
+
+scp -i "/c/Users/IT FAir/Desktop/uokclass/ubuntu-lemp-key.pem" index.html assign2.html azureuser@20.121.113.179:/tmp/
+
+SSH again, then on VM:
+
+sudo cp /tmp/index.html /var/www/html/
+sudo cp /tmp/assign2.html /var/www/html/
+sudo chown root:root /var/www/html/index.html /var/www/html/assign2.html
+sudo ls -la /var/www/html/
+curl http://localhost/index.html
+curl http://localhost/assign2.html
+
+
+PART F — MAKE index.html THE HOMEPAGE (1 min)
+---------------------------------------------
+On VM:
+
+sudo rm -f /var/www/html/index.nginx-debian.html
+# index.html is already default
+
+
+PART G — TEST FROM PC + SCREENSHOTS (5 min)
+-------------------------------------------
+Browser: http://20.121.113.179/
+Browser: http://20.121.113.179/assign2.html
+
+On VM for assignment proof:
+df -h
+ip addr
+ip route
+resolvectl status | head -20
+
+Screenshot everything listed in ASSIGNMENT2.md checklist.
+
+
+TROUBLESHOOTING
+---------------
+- "Welcome to nginx" only → PART E not done or wrong folder
+- Connection refused → Azure Networking ports 80/22
+- Permission denied SSH → wrong user or key path
+- Class VM 20.217.82.228 → use cloudstudent and that IP instead of Azure

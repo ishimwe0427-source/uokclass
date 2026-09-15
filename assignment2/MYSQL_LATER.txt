@@ -1,0 +1,43 @@
+MYSQL REMOTE ACCESS — AFTER WEBSITE IS LIVE (do not rush in class)
+==================================================================
+VM: cloud-uok | Public IP: 20.121.113.179
+
+STEP 1 — Azure NSG (only when you need remote MySQL from PC)
+  Networking → Create port rule → Inbound
+  Service: MySQL (3306) OR Custom port 3306 TCP
+  Source: **My IP** (NOT "Any" — safer for school demo)
+  Name: MySQL-3306
+  Add
+
+STEP 2 — On VM (SSH)
+  sudo apt update
+  sudo apt install -y mysql-server
+  sudo systemctl enable mysql --now
+  sudo mysql_secure_installation
+
+STEP 3 — Create user for remote access (example)
+  sudo mysql
+  CREATE USER 'ishimwe'@'%' IDENTIFIED BY 'StrongPasswordHere123!';
+  GRANT ALL PRIVILEGES ON *.* TO 'ishimwe'@'%';
+  FLUSH PRIVILEGES;
+  EXIT;
+
+STEP 4 — Allow MySQL to listen (Ubuntu)
+  sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+  Change: bind-address = 127.0.0.1
+  To:     bind-address = 0.0.0.0
+  sudo systemctl restart mysql
+
+STEP 5 — UFW on VM
+  sudo ufw allow 3306/tcp
+  sudo ufw status
+
+STEP 6 — Connect from Windows PC
+  Install MySQL Workbench or use:
+  mysql -h 20.121.113.179 -u ishimwe -p
+
+SECURITY: For assignment demo, prefer Source = My IP in Azure.
+Remove 3306 rule when class is over if not needed.
+
+LEMP tutorial (full stack later):
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu
