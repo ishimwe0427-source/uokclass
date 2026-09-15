@@ -1,5 +1,7 @@
 # UOK Cloud — Ishimwe Jean Francois
 
+**Lecturer — all links in one place:** [LECTURER_SUBMISSION.md](./LECTURER_SUBMISSION.md)
+
 **GitHub:** ishimwe0427-source/uokclass · **VM:** cloud-uok · **Public IP:** 20.121.113.179
 
 | Item | Link |
